@@ -4,7 +4,7 @@
 #
 Name     : augeas
 Version  : 1.4.0
-Release  : 11
+Release  : 12
 URL      : http://download.augeas.net/augeas-1.4.0.tar.gz
 Source0  : http://download.augeas.net/augeas-1.4.0.tar.gz
 Summary  : A library for changing configuration files
