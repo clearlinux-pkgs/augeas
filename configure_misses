@@ -1,0 +1,12 @@
+Configure miss: naturaldocs
+Configure miss: NaturalDocs
+Configure miss: xlocale.h usability
+Configure miss: xlocale.h presence
+Configure miss: xlocale.h
+Configure miss: selinux/selinux.h usability
+Configure miss: selinux/selinux.h presence
+Configure miss: selinux/selinux.h
+Configure miss: library containing setfilecon
+Configure miss: whether stdint.h predates C++11
+Configure miss: whether the C locale is free of encoding errors
+Configure miss: a turkish Unicode locale
