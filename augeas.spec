@@ -6,7 +6,7 @@
 #
 Name     : augeas
 Version  : 1.9.0
-Release  : 15
+Release  : 16
 URL      : http://download.augeas.net/augeas-1.9.0.tar.gz
 Source0  : http://download.augeas.net/augeas-1.9.0.tar.gz
 Source99 : http://download.augeas.net/augeas-1.9.0.tar.gz.sig
