@@ -1,12 +1,13 @@
 Configure miss: naturaldocs
 Configure miss: NaturalDocs
-Configure miss: xlocale.h usability
-Configure miss: xlocale.h presence
-Configure miss: xlocale.h
+Configure miss: pthread_sigmask
 Configure miss: selinux/selinux.h usability
 Configure miss: selinux/selinux.h presence
 Configure miss: selinux/selinux.h
+Configure miss: crtdefs.h usability
+Configure miss: crtdefs.h presence
+Configure miss: crtdefs.h
 Configure miss: library containing setfilecon
-Configure miss: whether stdint.h predates C++11
-Configure miss: whether the C locale is free of encoding errors
+Configure miss: whether pthread_rwlock_rdlock prefers a writer to a reader
 Configure miss: a turkish Unicode locale
+Configure miss: whether pthread_sigmask is only a macro

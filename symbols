@@ -10,6 +10,7 @@ libaugeas.so.0:AUGEAS_0.20.0
 libaugeas.so.0:AUGEAS_0.21.0
 libaugeas.so.0:AUGEAS_0.22.0
 libaugeas.so.0:AUGEAS_0.23.0
+libaugeas.so.0:AUGEAS_0.24.0
 libaugeas.so.0:AUGEAS_0.8.0
 libaugeas.so.0:__aug_close_memstream
 libaugeas.so.0:__aug_init_memstream
@@ -32,6 +33,10 @@ libaugeas.so.0:aug_load_file
 libaugeas.so.0:aug_match
 libaugeas.so.0:aug_mv
 libaugeas.so.0:aug_ns_attr
+libaugeas.so.0:aug_ns_count
+libaugeas.so.0:aug_ns_label
+libaugeas.so.0:aug_ns_path
+libaugeas.so.0:aug_ns_value
 libaugeas.so.0:aug_print
 libaugeas.so.0:aug_rename
 libaugeas.so.0:aug_rm
@@ -48,6 +53,7 @@ libaugeas.so.0:aug_transform
 libfa.so.1:FA_1.0.0
 libfa.so.1:FA_1.2.0
 libfa.so.1:FA_1.4.0
+libfa.so.1:FA_1.5.0
 libfa.so.1:fa_ambig_example
 libfa.so.1:fa_as_regexp
 libfa.so.1:fa_compile
@@ -63,12 +69,19 @@ libfa.so.1:fa_expand_nocase
 libfa.so.1:fa_free
 libfa.so.1:fa_intersect
 libfa.so.1:fa_is_basic
+libfa.so.1:fa_is_deterministic
 libfa.so.1:fa_is_nocase
 libfa.so.1:fa_iter
+libfa.so.1:fa_json
 libfa.so.1:fa_make_basic
 libfa.so.1:fa_minimize
 libfa.so.1:fa_minus
 libfa.so.1:fa_nocase
 libfa.so.1:fa_overlap
 libfa.so.1:fa_restrict_alphabet
+libfa.so.1:fa_state_initial
+libfa.so.1:fa_state_is_accepting
+libfa.so.1:fa_state_next
+libfa.so.1:fa_state_num_trans
+libfa.so.1:fa_state_trans
 libfa.so.1:fa_union
