@@ -5,19 +5,19 @@
 # Source0 file verified with key 0xA2357646FC6E8A22 (lutter@apache.org)
 #
 Name     : augeas
-Version  : 1.10.1
-Release  : 18
-URL      : http://download.augeas.net/augeas-1.10.1.tar.gz
-Source0  : http://download.augeas.net/augeas-1.10.1.tar.gz
-Source99 : http://download.augeas.net/augeas-1.10.1.tar.gz.sig
+Version  : 1.11.0
+Release  : 19
+URL      : http://download.augeas.net/augeas-1.11.0.tar.gz
+Source0  : http://download.augeas.net/augeas-1.11.0.tar.gz
+Source99 : http://download.augeas.net/augeas-1.11.0.tar.gz.sig
 Summary  : A library for changing configuration files
 Group    : Development/Tools
 License  : LGPL-2.1 LGPL-2.1+
-Requires: augeas-bin
-Requires: augeas-lib
-Requires: augeas-data
-Requires: augeas-license
-Requires: augeas-man
+Requires: augeas-bin = %{version}-%{release}
+Requires: augeas-data = %{version}-%{release}
+Requires: augeas-lib = %{version}-%{release}
+Requires: augeas-license = %{version}-%{release}
+Requires: augeas-man = %{version}-%{release}
 BuildRequires : bison
 BuildRequires : flex
 BuildRequires : glibc-locale
@@ -39,9 +39,9 @@ format and the transformation into a tree.
 %package bin
 Summary: bin components for the augeas package.
 Group: Binaries
-Requires: augeas-data
-Requires: augeas-license
-Requires: augeas-man
+Requires: augeas-data = %{version}-%{release}
+Requires: augeas-license = %{version}-%{release}
+Requires: augeas-man = %{version}-%{release}
 
 %description bin
 bin components for the augeas package.
@@ -58,10 +58,10 @@ data components for the augeas package.
 %package dev
 Summary: dev components for the augeas package.
 Group: Development
-Requires: augeas-lib
-Requires: augeas-bin
-Requires: augeas-data
-Provides: augeas-devel
+Requires: augeas-lib = %{version}-%{release}
+Requires: augeas-bin = %{version}-%{release}
+Requires: augeas-data = %{version}-%{release}
+Provides: augeas-devel = %{version}-%{release}
 
 %description dev
 dev components for the augeas package.
@@ -70,8 +70,8 @@ dev components for the augeas package.
 %package lib
 Summary: lib components for the augeas package.
 Group: Libraries
-Requires: augeas-data
-Requires: augeas-license
+Requires: augeas-data = %{version}-%{release}
+Requires: augeas-license = %{version}-%{release}
 
 %description lib
 lib components for the augeas package.
@@ -94,14 +94,14 @@ man components for the augeas package.
 
 
 %prep
-%setup -q -n augeas-1.10.1
+%setup -q -n augeas-1.11.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1532273222
+export SOURCE_DATE_EPOCH=1542067908
 %configure --disable-static
 make  %{?_smp_mflags}
 
@@ -113,10 +113,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1532273222
+export SOURCE_DATE_EPOCH=1542067908
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/augeas
-cp COPYING %{buildroot}/usr/share/doc/augeas/COPYING
+mkdir -p %{buildroot}/usr/share/package-licenses/augeas
+cp COPYING %{buildroot}/usr/share/package-licenses/augeas/COPYING
 %make_install
 
 %files
@@ -321,6 +321,7 @@ cp COPYING %{buildroot}/usr/share/doc/augeas/COPYING
 /usr/share/augeas/lenses/dist/sshd.aug
 /usr/share/augeas/lenses/dist/sssd.aug
 /usr/share/augeas/lenses/dist/star.aug
+/usr/share/augeas/lenses/dist/strongswan.aug
 /usr/share/augeas/lenses/dist/stunnel.aug
 /usr/share/augeas/lenses/dist/subversion.aug
 /usr/share/augeas/lenses/dist/sudoers.aug
@@ -520,6 +521,7 @@ cp COPYING %{buildroot}/usr/share/doc/augeas/COPYING
 /usr/share/augeas/lenses/dist/tests/test_sshd.aug
 /usr/share/augeas/lenses/dist/tests/test_sssd.aug
 /usr/share/augeas/lenses/dist/tests/test_star.aug
+/usr/share/augeas/lenses/dist/tests/test_strongswan.aug
 /usr/share/augeas/lenses/dist/tests/test_stunnel.aug
 /usr/share/augeas/lenses/dist/tests/test_subversion.aug
 /usr/share/augeas/lenses/dist/tests/test_sudoers.aug
@@ -582,16 +584,16 @@ cp COPYING %{buildroot}/usr/share/doc/augeas/COPYING
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libaugeas.so.0
-/usr/lib64/libaugeas.so.0.24.0
+/usr/lib64/libaugeas.so.0.24.1
 /usr/lib64/libfa.so.1
-/usr/lib64/libfa.so.1.5.1
+/usr/lib64/libfa.so.1.5.2
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/augeas/COPYING
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/augeas/COPYING
 
 %files man
-%defattr(-,root,root,-)
+%defattr(0644,root,root,0755)
 /usr/share/man/man1/augmatch.1
 /usr/share/man/man1/augparse.1
 /usr/share/man/man1/augtool.1

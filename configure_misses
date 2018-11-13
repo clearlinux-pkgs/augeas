@@ -8,6 +8,8 @@ Configure miss: crtdefs.h usability
 Configure miss: crtdefs.h presence
 Configure miss: crtdefs.h
 Configure miss: library containing setfilecon
+Configure miss: strerror_r with POSIX signature
 Configure miss: whether pthread_rwlock_rdlock prefers a writer to a reader
-Configure miss: a turkish Unicode locale
+Configure miss: ioctl with POSIX signature
+Configure miss: working nanosleep
 Configure miss: whether pthread_sigmask is only a macro
