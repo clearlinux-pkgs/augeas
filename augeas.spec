@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xA2357646FC6E8A22 (lutter@apache.org)
 #
 Name     : augeas
-Version  : 1.11.0
-Release  : 21
-URL      : http://download.augeas.net/augeas-1.11.0.tar.gz
-Source0  : http://download.augeas.net/augeas-1.11.0.tar.gz
-Source99 : http://download.augeas.net/augeas-1.11.0.tar.gz.sig
+Version  : 1.12.0
+Release  : 22
+URL      : http://download.augeas.net/augeas-1.12.0.tar.gz
+Source0  : http://download.augeas.net/augeas-1.12.0.tar.gz
+Source1  : http://download.augeas.net/augeas-1.12.0.tar.gz.sig
 Summary  : A library for changing configuration files
 Group    : Development/Tools
 License  : LGPL-2.1 LGPL-2.1+
@@ -41,7 +41,6 @@ Summary: bin components for the augeas package.
 Group: Binaries
 Requires: augeas-data = %{version}-%{release}
 Requires: augeas-license = %{version}-%{release}
-Requires: augeas-man = %{version}-%{release}
 
 %description bin
 bin components for the augeas package.
@@ -62,6 +61,7 @@ Requires: augeas-lib = %{version}-%{release}
 Requires: augeas-bin = %{version}-%{release}
 Requires: augeas-data = %{version}-%{release}
 Provides: augeas-devel = %{version}-%{release}
+Requires: augeas = %{version}-%{release}
 
 %description dev
 dev components for the augeas package.
@@ -94,29 +94,38 @@ man components for the augeas package.
 
 
 %prep
-%setup -q -n augeas-1.11.0
+%setup -q -n augeas-1.12.0
+cd %{_builddir}/augeas-1.12.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1542067908
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1579038981
+export GCC_IGNORE_WERROR=1
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %configure --disable-static
 make  %{?_smp_mflags}
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1542067908
+export SOURCE_DATE_EPOCH=1579038981
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/augeas
-cp COPYING %{buildroot}/usr/share/package-licenses/augeas/COPYING
+cp %{_builddir}/augeas-1.12.0/COPYING %{buildroot}/usr/share/package-licenses/augeas/0bf81afbc585fd8fa3a9267d33498831f5a5c9c2
 %make_install
 
 %files
@@ -136,6 +145,7 @@ cp COPYING %{buildroot}/usr/share/package-licenses/augeas/COPYING
 /usr/share/augeas/lenses/dist/activemq_xml.aug
 /usr/share/augeas/lenses/dist/afs_cellalias.aug
 /usr/share/augeas/lenses/dist/aliases.aug
+/usr/share/augeas/lenses/dist/anaconda.aug
 /usr/share/augeas/lenses/dist/anacron.aug
 /usr/share/augeas/lenses/dist/approx.aug
 /usr/share/augeas/lenses/dist/apt_update_manager.aug
@@ -172,6 +182,7 @@ cp COPYING %{buildroot}/usr/share/package-licenses/augeas/COPYING
 /usr/share/augeas/lenses/dist/darkice.aug
 /usr/share/augeas/lenses/dist/debctrl.aug
 /usr/share/augeas/lenses/dist/desktop.aug
+/usr/share/augeas/lenses/dist/devfsrules.aug
 /usr/share/augeas/lenses/dist/device_map.aug
 /usr/share/augeas/lenses/dist/dhclient.aug
 /usr/share/augeas/lenses/dist/dhcpd.aug
@@ -301,6 +312,7 @@ cp COPYING %{buildroot}/usr/share/package-licenses/augeas/COPYING
 /usr/share/augeas/lenses/dist/samba.aug
 /usr/share/augeas/lenses/dist/schroot.aug
 /usr/share/augeas/lenses/dist/securetty.aug
+/usr/share/augeas/lenses/dist/semanage.aug
 /usr/share/augeas/lenses/dist/sep.aug
 /usr/share/augeas/lenses/dist/services.aug
 /usr/share/augeas/lenses/dist/shadow.aug
@@ -336,6 +348,7 @@ cp COPYING %{buildroot}/usr/share/package-licenses/augeas/COPYING
 /usr/share/augeas/lenses/dist/tests/test_activemq_xml.aug
 /usr/share/augeas/lenses/dist/tests/test_afs_cellalias.aug
 /usr/share/augeas/lenses/dist/tests/test_aliases.aug
+/usr/share/augeas/lenses/dist/tests/test_anaconda.aug
 /usr/share/augeas/lenses/dist/tests/test_anacron.aug
 /usr/share/augeas/lenses/dist/tests/test_approx.aug
 /usr/share/augeas/lenses/dist/tests/test_apt_update_manager.aug
@@ -372,6 +385,7 @@ cp COPYING %{buildroot}/usr/share/package-licenses/augeas/COPYING
 /usr/share/augeas/lenses/dist/tests/test_darkice.aug
 /usr/share/augeas/lenses/dist/tests/test_debctrl.aug
 /usr/share/augeas/lenses/dist/tests/test_desktop.aug
+/usr/share/augeas/lenses/dist/tests/test_devfsrules.aug
 /usr/share/augeas/lenses/dist/tests/test_device_map.aug
 /usr/share/augeas/lenses/dist/tests/test_dhclient.aug
 /usr/share/augeas/lenses/dist/tests/test_dhcpd.aug
@@ -502,6 +516,7 @@ cp COPYING %{buildroot}/usr/share/package-licenses/augeas/COPYING
 /usr/share/augeas/lenses/dist/tests/test_samba.aug
 /usr/share/augeas/lenses/dist/tests/test_schroot.aug
 /usr/share/augeas/lenses/dist/tests/test_securetty.aug
+/usr/share/augeas/lenses/dist/tests/test_semanage.aug
 /usr/share/augeas/lenses/dist/tests/test_services.aug
 /usr/share/augeas/lenses/dist/tests/test_shadow.aug
 /usr/share/augeas/lenses/dist/tests/test_shells.aug
@@ -533,6 +548,7 @@ cp COPYING %{buildroot}/usr/share/package-licenses/augeas/COPYING
 /usr/share/augeas/lenses/dist/tests/test_termcap.aug
 /usr/share/augeas/lenses/dist/tests/test_thttpd.aug
 /usr/share/augeas/lenses/dist/tests/test_tmpfiles.aug
+/usr/share/augeas/lenses/dist/tests/test_toml.aug
 /usr/share/augeas/lenses/dist/tests/test_trapperkeeper.aug
 /usr/share/augeas/lenses/dist/tests/test_tuned.aug
 /usr/share/augeas/lenses/dist/tests/test_up2date.aug
@@ -553,6 +569,7 @@ cp COPYING %{buildroot}/usr/share/package-licenses/augeas/COPYING
 /usr/share/augeas/lenses/dist/tests/test_yum.aug
 /usr/share/augeas/lenses/dist/thttpd.aug
 /usr/share/augeas/lenses/dist/tmpfiles.aug
+/usr/share/augeas/lenses/dist/toml.aug
 /usr/share/augeas/lenses/dist/trapperkeeper.aug
 /usr/share/augeas/lenses/dist/tuned.aug
 /usr/share/augeas/lenses/dist/up2date.aug
@@ -576,7 +593,8 @@ cp COPYING %{buildroot}/usr/share/package-licenses/augeas/COPYING
 
 %files dev
 %defattr(-,root,root,-)
-/usr/include/*.h
+/usr/include/augeas.h
+/usr/include/fa.h
 /usr/lib64/libaugeas.so
 /usr/lib64/libfa.so
 /usr/lib64/pkgconfig/augeas.pc
@@ -584,13 +602,13 @@ cp COPYING %{buildroot}/usr/share/package-licenses/augeas/COPYING
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libaugeas.so.0
-/usr/lib64/libaugeas.so.0.24.1
+/usr/lib64/libaugeas.so.0.24.2
 /usr/lib64/libfa.so.1
-/usr/lib64/libfa.so.1.5.2
+/usr/lib64/libfa.so.1.5.3
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/augeas/COPYING
+/usr/share/package-licenses/augeas/0bf81afbc585fd8fa3a9267d33498831f5a5c9c2
 
 %files man
 %defattr(0644,root,root,0755)
