@@ -6,7 +6,7 @@
 #
 Name     : augeas
 Version  : 1.12.0
-Release  : 22
+Release  : 23
 URL      : http://download.augeas.net/augeas-1.12.0.tar.gz
 Source0  : http://download.augeas.net/augeas-1.12.0.tar.gz
 Source1  : http://download.augeas.net/augeas-1.12.0.tar.gz.sig
