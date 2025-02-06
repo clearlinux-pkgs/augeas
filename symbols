@@ -11,6 +11,7 @@ libaugeas.so.0:AUGEAS_0.21.0
 libaugeas.so.0:AUGEAS_0.22.0
 libaugeas.so.0:AUGEAS_0.23.0
 libaugeas.so.0:AUGEAS_0.24.0
+libaugeas.so.0:AUGEAS_0.25.0
 libaugeas.so.0:AUGEAS_0.8.0
 libaugeas.so.0:__aug_close_memstream
 libaugeas.so.0:__aug_init_memstream
@@ -37,6 +38,7 @@ libaugeas.so.0:aug_ns_count
 libaugeas.so.0:aug_ns_label
 libaugeas.so.0:aug_ns_path
 libaugeas.so.0:aug_ns_value
+libaugeas.so.0:aug_preview
 libaugeas.so.0:aug_print
 libaugeas.so.0:aug_rename
 libaugeas.so.0:aug_rm
